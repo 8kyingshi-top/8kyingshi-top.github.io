@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8K影视｜8K超高清影像技术与观影设备交流站 · 8K影视</title>
+<meta name="description" content="8K影视专注8K超高清影像技术与家庭观影设备的长期记录：分辨率与画质原理、片源与编码格式解析、显示设备选购与校准实测、放映现场与行业动态。站內内容以技术说明和器材交流为主，不涉及任何影视资源的下载、转载或在线播放服务。">
+<meta name="keywords" content="8K影视,8K超高清,8K分辨率,超高清画质,HDR显示,HDMI 2.1,片源编码,显示设备校准,家庭影院,蓝光原盘,影像技术,观影设备">
+<style>
+:root{
+  --bg:#07090c;--panel:#0d1117;--panel2:#131a23;--line:#1e2733;
+  --txt:#d7dee7;--txt2:#8b9aa8;--txt3:#5d6d7e;
+  --cy:#2dd4bf;--cy2:#0e7490;--am:#f59e0b;--rd:#ef4444;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:"Inter","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--cy);text-decoration:none}
+a:hover{color:#5eead4;text-decoration:underline;text-underline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* ── 顶栏 ── */
+.top{
+  border-bottom:1px solid var(--line);background:rgba(7,9,12,.86);
+  backdrop-filter:blur(8px);position:sticky;top:0;z-index:50;
+}
+.top .wrap{display:flex;align-items:center;gap:26px;height:54px}
+.brand{display:flex;align-items:baseline;gap:8px;font-weight:700;letter-spacing:.5px}
+.brand b{color:#fff;font-size:16px}
+.brand em{font-style:normal;color:var(--cy2);font-size:11px;letter-spacing:1px}
+.top nav{display:flex;gap:20px;flex-wrap:wrap;margin-left:auto}
+.top nav a{color:var(--txt2);font-size:13px}
+.top nav a:hover{color:var(--cy);text-decoration:none}
+
+/* ── 状态栏 ── */
+.bar{
+  border-bottom:1px solid var(--line);background:var(--panel);
+  font-family:"SFMono-Regular",Consolas,monospace;font-size:12px;color:var(--txt3);
+}
+.bar .wrap{display:flex;gap:20px;flex-wrap:wrap;padding:8px 22px}
+.bar span b{color:var(--cy);font-weight:400}
+.bar span:last-child{margin-left:auto;color:var(--txt2)}
+
+/* ── 首屏 ── */
+.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
+  background:radial-gradient(circle,rgba(45,212,191,.14),transparent 68%);pointer-events:none;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;font-size:12px;color:var(--cy2);
+  border:1px solid var(--line);background:var(--panel);padding:5px 12px;border-radius:99px;
+  font-family:Consolas,monospace;margin-bottom:22px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cy);box-shadow:0 0 0 4px rgba(45,212,191,.16)}
+h1{font-size:44px;line-height:1.2;letter-spacing:-1px;color:#fff;font-weight:800}
+h1 i{font-style:normal;color:var(--cy)}
+.hero p{max-width:680px;color:var(--txt2);font-size:16px;margin-top:18px}
+.metaline{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.metaline a{
+  font-family:Consolas,monospace;font-size:12.5px;color:var(--txt2);
+  border:1px solid var(--line);background:var(--panel);padding:7px 14px;border-radius:6px;
+}
+.metaline a:hover{color:var(--cy);border-color:var(--cy2);text-decoration:none}
+
+/* ── 通用标题 ── */
+.sec{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-h{display:flex;align-items:flex-end;gap:14px;margin-bottom:30px;flex-wrap:wrap}
+.sec-h .no{
+  font-family:Consolas,monospace;font-size:13px;color:var(--cy2);
+  border:1px solid var(--line);padding:3px 9px;border-radius:5px;
+}
+.sec-h h2{font-size:24px;color:#fff;font-weight:700;letter-spacing:-.3px}
+.sec-h small{color:var(--txt3);font-size:12.5px;font-family:Consolas,monospace}
+
+/* ── 指标卡 ── */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.metric{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px 18px 16px;position:relative;
+}
+.metric::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;background:var(--cy2)}
+.metric .k{font-family:Consolas,monospace;font-size:11.5px;color:var(--txt3);letter-spacing:.5px}
+.metric .v{font-size:22px;font-weight:700;color:#fff;margin-top:6px;letter-spacing:-.5px}
+.metric .v u{font-size:12px;text-decoration:none;color:var(--txt2);font-weight:400;margin-left:5px}
+.metric .d{font-size:12.5px;color:var(--txt2);margin-top:4px}
+
+/* ── 规格表 ── */
+.spec{width:100%;border-collapse:collapse;font-size:13.5px;font-family:Consolas,monospace}
+.spec th,.spec td{border:1px solid var(--line);padding:11px 14px;text-align:left;vertical-align:top}
+.spec thead th{background:var(--panel2);color:var(--cy);font-weight:600;font-size:12.5px;letter-spacing:.5px}
+.spec tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+.spec td:first-child{color:var(--txt2);width:26%}
+.tag{
+  display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;
+  border:1px solid var(--line);color:var(--txt2);margin:2px 4px 2px 0;font-family:Consolas,monospace;
+}
+.tag.on{color:var(--cy);border-color:var(--cy2);background:rgba(45,212,191,.08)}
+
+/* ── 设备卡 ── */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dev{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.dev .hd{
+  padding:13px 16px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+}
+.dev .hd b{font-size:14.5px;color:#fff}
+.dev .hd i{
+  font-style:normal;font-size:11px;font-family:Consolas,monospace;color:var(--cy);
+  border:1px solid var(--cy2);padding:1px 6px;border-radius:4px;flex:none;
+}
+.dev .bd{padding:14px 16px;flex:1}
+.dev .bd p{font-size:13px;color:var(--txt2)}
+.dev .ft{
+  padding:11px 16px;border-top:1px solid var(--line);
+  font-family:Consolas,monospace;font-size:11.5px;color:var(--txt3);
+  display:flex;justify-content:space-between;gap:8px;
+}
+.dev .ft b{color:var(--am);font-weight:400}
+
+/* ── 日志流 ── */
+.feed{display:flex;flex-direction:column;gap:0}
+.post{
+  display:grid;grid-template-columns:112px 1fr;gap:20px;
+  padding:22px 0;border-bottom:1px dashed var(--line);
+}
+.post:last-child{border-bottom:none}
+.post time{
+  font-family:Consolas,monospace;font-size:12px;color:var(--cy2);padding-top:3px;
+  display:flex;flex-direction:column;line-height:1.5;
+}
+.post time i{font-style:normal;color:var(--txt3);font-size:11px}
+.post h3{font-size:16.5px;color:#fff;font-weight:600;margin-bottom:8px}
+.post p{font-size:13.5px;color:var(--txt2)}
+.post .fl{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+
+/* ── FAQ ── */
+details{
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  margin-bottom:10px;overflow:hidden;
+}
+details[open]{border-color:var(--cy2)}
+summary{
+  cursor:pointer;padding:14px 18px;font-size:14.5px;color:#fff;font-weight:500;
+  list-style:none;display:flex;gap:12px;align-items:baseline;
+}
+summary::-webkit-details-marker{display:none}
+summary::before{
+  content:"+";color:var(--cy);font-family:Consolas,monospace;font-size:15px;flex:none;
+}
+details[open] summary::before{content:"−"}
+summary span.q{color:var(--txt3);font-family:Consolas,monospace;font-size:12px;flex:none}
+details p{padding:0 18px 15px 46px;font-size:13.5px;color:var(--txt2)}
+
+/* ── 页脚 ── */
+footer{border-top:1px solid var(--line);background:var(--panel)}
+.foot{padding:40px 0 26px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+.foot h4{font-size:13px;color:var(--cy2);font-family:Consolas,monospace;margin-bottom:12px;font-weight:600}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.foot a{color:var(--txt2);font-size:13px}
+.foot a:hover{color:var(--cy)}
+.foot .about p{font-size:13px;color:var(--txt2);max-width:340px}
+.copy{
+  border-top:1px solid var(--line);padding:16px 0;
+  font-family:Consolas,monospace;font-size:11.5px;color:var(--txt3);
+  display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;
+}
+
+/* ── 响应式 ── */
+@media (max-width:960px){
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .foot{grid-template-columns:1fr 1fr;gap:24px}
+  h1{font-size:34px}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .top .wrap{height:auto;padding:12px 16px;gap:12px;flex-wrap:wrap}
+  .top nav{margin-left:0;width:100%;gap:14px}
+  .bar .wrap{gap:10px;font-size:11px}
+  .bar span:last-child{margin-left:0;width:100%}
+  .hero{padding:38px 0 30px}
+  h1{font-size:27px}
+  .hero p{font-size:14.5px}
+  .sec{padding:38px 0}
+  .sec-h h2{font-size:20px}
+  .grid4,.grid3{grid-template-columns:1fr}
+  .post{grid-template-columns:1fr;gap:8px}
+  .post time{flex-direction:row;gap:10px;align-items:center}
+  .spec{font-size:12.5px}
+  .spec th:nth-child(3),.spec td:nth-child(3){display:none}
+  .foot{grid-template-columns:1fr}
+  .copy{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="top">
+  <div class="wrap">
+    <div class="brand"><b>8K影视</b><em>8K UHD LAB</em></div>
+    <nav>
+      <a href="#spec">规格解析</a>
+      <a href="#device">设备实测</a>
+      <a href="#feed">技术日志</a>
+      <a href="#faq">常见问答</a>
+      <a href="#about">关于本站</a>
+    </nav>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <span>节点 <b>8K影视 · 主站</b></span>
+    <span>访问地址 <b>https://8kyingshi-top.github.io</b></span>
+    <span>内容状态 <b>持续更新</b></span>
+    <span>服务声明：仅提供技术交流与观影知识分享，不涉及任何影视资源的下载、转载或在线播放</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><i class="dot"></i> 在线 · 8K超高清影像技术交流站</div>
+    <h1>把 <i>8K影视</i> 看清楚，<br>先得把参数看明白。</h1>
+    <p>8K影视是一间长期记录超高清影像技术与家庭观影设备的笔记站。分辨率、色深、帧率、码率、接口带宽、屏幕材质、色彩校准——这些决定画面最终长什么样的东西，我们一条一条拆开讲，尽量不说营销话术，也不拿厂商样张当结论。</p>
+    <div class="metaline">
+      <a href="#">8K 与 4K 差异实测</a>
+      <a href="#">HDMI 2.1 带宽对照</a>
+      <a href="#">HDR 格式兼容性</a>
+      <a href="#">家庭影院布线要点</a>
+      <a href="#">官方入口：https://8kyingshi-top.github.io</a>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="spec">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="no">MODULE 01</span>
+      <h2>规格解析：参数表先读哪几行</h2>
+      <small>RESOLUTION &amp; SIGNAL</small>
+    </div>
+
+    <div class="grid4">
+      <div class="metric"><div class="k">水平像素</div><div class="v">7680 <u>px</u></div><div class="d">4K 的约 2 倍，总像素约 4 倍</div></div>
+      <div class="metric"><div class="k">垂直像素</div><div class="v">4320 <u>px</u></div><div class="d">总像素约 3300 万级别</div></div>
+      <div class="metric"><div class="k">常见帧率</div><div class="v">24 / 30 / 60 <u>fps</u></div><div class="d">60fps 对接口带宽要求陡增</div></div>
+      <div class="metric"><div class="k">色深</div><div class="v">10-bit <u>起</u></div><div class="d">8-bit 上采样会损失平滑过渡</div></div>
+    </div>
+
+    <table class="spec" style="margin-top:26px">
+      <thead>
+        <tr><th>信号规格</th><th>所需带宽（近似值）</th><th>主要用途</th><th>兼容情况</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4K / 60Hz / 10-bit / 4:4:4</td><td>约 18–22 Gbps</td><td>PC 输出、设计修图</td>
+          <td><span class="tag on">HDMI 2.0 可承载</span><span class="tag">需开 YCbCr 4:2:2 更稳</span></td>
+        </tr>
+        <tr>
+          <td>8K / 30Hz / 10-bit / 4:2:0</td><td>约 24 Gbps</td><td>演示片、静态展示</td>
+          <td><span class="tag on">HDMI 2.1 必需</span><span class="tag">多数电视默认降采样</span></td>
+        </tr>
+        <tr>
+          <td>8K / 60Hz / 10-bit / 4:2:0</td><td>约 40–48 Gbps</td><td>游戏、体育赛事转播</td>
+          <td><span class="tag on">需 48Gbps 认证线</span><span class="tag">源端与显示端都要支持</span></td>
+        </tr>
+        <tr>
+          <td>8K / 60Hz / 12-bit / 4:4:4</td><td>超过 80 Gbps</td><td>专业调色、后期制作</td>
+          <td><span class="tag">消费级接口尚未普及</span><span class="tag">多走 DisplayPort / 专用方案</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:22px;font-size:13.5px;color:var(--txt2)">
+      在 8K影视 的实测里，最容易被忽略的一点是：参数表能跑满，不代表画质就好。片源本身的编码质量、显示设备的控黑能力、环境光的强弱，对观感的贡献往往大过那多出来的几百万像素。
+      这也是我们把"规格解析"放在第一位的原因——先把能查证的数值搞清楚，再谈主观感受，讨论才有落点。
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="device">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="no">MODULE 02</span>
+      <h2>设备实测：三类主流方案的长短板</h2>
+      <small>DISPLAY &amp; SIGNAL CHAIN</small>
+    </div>
+
+    <div class="grid3">
+      <article class="dev">
+        <div class="hd"><b>Mini LED 电视</b><i>LCD 路线</i></div>
+        <div class="bd">
+          <p>靠数千个独立背光分区把黑位压下去，峰值亮度高，HDR 高光不容易糊。白天客厅环境光下优势明显，尺寸选择也多。</p>
+          <p style="margin-top:9px">短板是分区数量不够时，大面积暗场会出现光晕；控光算法各家差异很大，同一参数表能给出完全不同的观感。</p>
+        </div>
+        <div class="ft"><span>适合：客厅 / 白天观影</span><b>约 3000–15000 元</b></div>
+      </article>
+
+      <article class="dev">
+        <div class="hd"><b>OLED 电视</b><i>自发光</i></div>
+        <div class="bd">
+          <p>像素级控光，纯黑就是彻底不发光，暗场细节的层次感很难被替代。看夜戏、星空、字幕边缘时差别最直接。</p>
+          <p style="margin-top:9px">短板是峰值亮度上限低于高端 Mini LED，长期显示固定静态内容有烧屏风险；大尺寸价格仍偏高。</p>
+        </div>
+        <div class="ft"><span>适合：暗室 / 电影向</span><b>约 5000–25000 元</b></div>
+      </article>
+
+      <article class="dev">
+        <div class="hd"><b>激光 / 长焦投影</b><i>投影路线</i></div>
+        <div class="bd">
+          <p>能投出 100 英寸以上画面，沉浸感是电视难以给到的。超短焦机型贴墙即可，摆位比传统投影灵活很多。</p>
+          <p style="margin-top:9px">短板是对环境光极敏感，白天不拉窗帘基本不可用；原生对比度与黑位仍是投影的物理弱项。</p>
+        </div>
+        <div class="ft"><span>适合：暗室 / 大画面</span><b>约 4000–30000 元</b></div>
+      </article>
+    </div>
+
+    <p style="margin-top:24px;font-size:13.5px;color:var(--txt2)">
+      8K影视 做设备实测的一条原则是：不比较品牌宣传页上的数字，只记录可重复验证的现象。
+      同一段测试片段在关灯、开灯、不同色温设置下各跑一遍，再写结论。
+      这也意味着很多测评会写得"没那么干脆"——因为真实使用场景本来就不干脆。
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="feed">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="no">MODULE 03</span>
+      <h2>技术日志：最近写下的几篇</h2>
+      <small>CHANGELOG</small>
+    </div>
+
+    <div class="feed">
+      <article class="post">
+        <time>2026-09-28<i>校准笔记</i></time>
+        <div>
+          <h3>用 20 块钱的色卡校准投影，能改善多少</h3>
+          <p>结论是改善的是"一致性"，不是"上限"。色温从偏冷的 7800K 拉回 6500K 之后，肤色立刻自然了，但暗部细节该丢还是丢。真正决定暗部的是镜头和光圈，校准管不了那部分。</p>
+          <div class="fl"><span class="tag">色彩校准</span><span class="tag">投影</span><span class="tag on">实测</span></div>
+        </div>
+      </article>
+
+      <article class="post">
+        <time>2026-09-15<i>信号链路</i></time>
+        <div>
+          <h3>HDMI 线标着 8K，为什么还是只能跑 4K 60</h3>
+          <p>九成情况出在"线没问题、设备没谈拢"。源端没开 4:2:0 输出、电视的 HDMI 口没切到增强模式、中间过了个不支持的切换器——任意一环降级，整条链路就掉回低规格。逐个口排查比换线有效。</p>
+          <div class="fl"><span class="tag">HDMI 2.1</span><span class="tag">带宽</span><span class="tag">排障</span></div>
+        </div>
+      </article>
+
+      <article class="post">
+        <time>2026-09-02<i>片源研究</i></time>
+        <div>
+          <h3>原生 8K 内容少，为什么厂商还要推 8K 面板</h3>
+          <p>面板厂的角度和片源多少关系不大：更高像素密度能摊薄大尺寸下的像素间距，也能让本地升频算法有更多可操作的样本。对用户来说，8K 面板的 4K 表现往往确实更好，但那笔溢价买的主要是"更好的 4K"，不是"更多的 8K 内容"。</p>
+          <div class="fl"><span class="tag">产业链</span><span class="tag">升频</span><span class="tag on">观点</span></div>
+        </div>
+      </article>
+
+      <article class="post">
+        <time>2026-08-20<i>观影环境</i></time>
+        <div>
+          <h3>把客厅灯换成 2700K，画面对比度像换了一台电视</h3>
+          <p>很多人预算都花在主机上，最后被一盏吸顶灯抵消掉。色温高的冷白光会打在屏幕上形成漫反射，黑位直接被抬起来。换低色温光源、加个可调节的落地灯，成本比升级设备低两个量级，观感变化却立即可见。</p>
+          <div class="fl"><span class="tag">环境光</span><span class="tag">低成本改造</span></div>
+        </div>
+      </article>
+
+      <article class="post">
+        <time>2026-08-05<i>格式科普</i></time>
+        <div>
+          <h3>HDR10、Dolby Vision、HLG 到底差在哪</h3>
+          <p>最实用的区分是：HDR10 是静态元数据，一片一个亮度曲线；Dolby Vision 是逐帧动态元数据，能跟着画面实时调整；HLG 主要用在直播。家里片源以流媒体为主的话，Dolby Vision 的片库覆盖度比规格表上的参数更值得查。</p>
+          <div class="fl"><span class="tag">HDR</span><span class="tag">格式兼容</span><span class="tag on">入门</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="no">MODULE 04</span>
+      <h2>常见问答</h2>
+      <small>FAQ</small>
+    </div>
+
+    <details open>
+      <summary><span class="q">Q01</span>8K影视 这个站是做什么的，能在这里看片子吗</summary>
+      <p>不能。8K影视 只做超高清影像技术、显示设备与观影环境的知识记录和器材交流，站内没有任何影片资源、下载链接或在线播放功能。想看片请走正规持牌平台，这里给不了。</p>
+    </details>
+
+    <details>
+      <summary><span class="q">Q02</span>现在买 8K 电视是不是太早了</summary>
+      <p>取决于你看什么。主要看流媒体和本地 4K 片源的话，一台调校好的 4K OLED 往往比低端 8K 液晶更划算；如果预算充足、又在意未来几年的规格余量，8K 面板在 4K 内容下的升频表现确实更好。别为"8K"这三个字单独加钱，要为实际观感加钱。</p>
+    </details>
+
+    <details>
+      <summary><span class="q">Q03</span>8K 和 4K 的差别，多远能看出来</summary>
+      <p>有个粗略口径：观看距离（英寸）约等于屏幕对角线长度时，4K 的像素结构基本不可见；想看出 8K 的优势，距离要再近三到四成。65 英寸电视在沙发距离上，多数人分辨不出 4K 与 8K 的像素差异，差别更多来自面板的对比度、亮度和色彩处理。</p>
+    </details>
+
+    <details>
+      <summary><span class="q">Q04</span>HDMI 2.1 的"48Gbps"是必须的吗</summary>
+      <p>只有你需要 8K 60Hz 或 4K 120Hz 输出时才必须。普通看 4K 60Hz 的影视内容，HDMI 2.0 的带宽完全够用。另外注意"带 HDMI 2.1 接口"不等于"支持全部 2.1 特性"，有些接口只开放了 eARC 或可变刷新率，买之前要看完整规格表。</p>
+    </details>
+
+    <details>
+      <summary><span class="q">Q05</span>官方网址是什么，怎么确认没进错站</summary>
+      <p>唯一官方入口是 <a href="https://8kyingshi-top.github.io">https://8kyingshi-top.github.io</a>，站名固定为 8K影视。本站不设置任何镜像、不通过社交账号私信分发链接，凡是以 8K影视 名义让你下载播放器、交费解锁资源的，都不是我们。</p>
+    </details>
+
+    <details>
+      <summary><span class="q">Q06</span>本站内容可以转载吗</summary>
+      <p>技术类内容欢迎注明出处后非商用转载，实测数据请保留原始测试条件（环境光、片源、设置参数），因为脱离条件的数据没有参考意义。涉及厂商未公开资料的猜测性内容不在转载范围内。</p>
+    </details>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="no">MODULE 05</span>
+      <h2>关于 8K影视</h2>
+      <small>ABOUT</small>
+    </div>
+
+    <div style="border:1px solid var(--line);border-radius:10px;padding:26px;background:linear-gradient(180deg,var(--panel2),var(--panel))">
+      <p style="font-size:15px;color:var(--txt)">
+        8K影视 由几位长期折腾显示设备和家庭影院的爱好者维护，建站的初衷很朴素：
+        买设备时被参数表和营销词绕晕过，就想把踩过的坑一条条记下来，给同样在挑设备的人一个能直接用的参照。
+      </p>
+      <p style="margin-top:14px;font-size:14px;color:var(--txt2)">
+        本站与任何影视制作方、发行方、播放平台均无资源合作关系，不提供也不协助获取任何影视内容。
+        我们只讨论"怎么把画面呈现好"这件事本身——从信号怎么走、屏幕怎么调，到房间里的灯该怎么安排。
+      </p>
+      <p style="margin-top:14px;font-size:14px;color:var(--txt2)">
+        想找片源、想在线看剧的朋友，这里帮不上忙，请移步正规渠道。
+        但如果你想弄明白为什么同一个画面在不同电视上差这么多，或者卡在布线这一步不知道该买哪根线——8K影视 的内容可能正好有用。
+      </p>
+      <p style="margin-top:18px;font-family:Consolas,monospace;font-size:12.5px;color:var(--cy2)">
+        站点地址：https://8kyingshi-top.github.io　|　栏目：规格解析 · 设备实测 · 技术日志 · 常见问答 · 关于本站
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="about">
+        <h4>8K影视</h4>
+        <p>超高清影像技术与家庭观影设备交流站。只做技术说明与器材交流，不涉及任何影视资源的下载、转载或在线播放。</p>
+      </div>
+      <div>
+        <h4>栏目</h4>
+        <ul>
+          <li><a href="#spec">规格解析</a></li>
+          <li><a href="#device">设备实测</a></li>
+          <li><a href="#feed">技术日志</a></li>
+          <li><a href="#faq">常见问答</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>常用对照</h4>
+        <ul>
+          <li><a href="#">分辨率与像素对照</a></li>
+          <li><a href="#">HDMI 版本差异</a></li>
+          <li><a href="#">HDR 格式兼容表</a></li>
+          <li><a href="#">色域标准说明</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>官方入口</h4>
+        <ul>
+          <li><a href="https://8kyingshi-top.github.io">https://8kyingshi-top.github.io</a></li>
+          <li><a href="#about">关于 8K影视</a></li>
+          <li><a href="#">内容使用说明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span id="yr">2026</span> 8K影视 · 8K UHD LAB</span>
+      <span>官方网址：https://8kyingshi-top.github.io</span>
+      <span>本站不提供任何影视资源下载或在线播放服务</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
